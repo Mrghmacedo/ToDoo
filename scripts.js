@@ -5,15 +5,17 @@ let minhaLista = []
 
 
 function adicionarTarefa() {
-    minhaLista.push({ 
-        tarefa: input.value,
-        concluida: false
-    })
+ const textoTarefa = input.value.trim();
 
-    input.value = ''
+  if (textoTarefa === '') {
+    input.setCustomValidity('Campo obrigatório!');
+    input.reportValidity();
+    return;
+  }
 
-    mostrarTarefas()
-
+  minhaLista.push({ tarefa: textoTarefa, concluida: false });
+  input.value = '';
+  mostrarTarefas();
 }
 
 function mostrarTarefas() {
